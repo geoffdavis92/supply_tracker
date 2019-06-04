@@ -1,0 +1,13 @@
+<p>
+  <a href="{% url 'category_list' %}">&laquo;&nbsp;Back to categories</a>
+</p>
+
+<h1>{{ category_value }}</h1>
+
+<ul>
+  {% for product in products_in_category.all %}
+    {% if not product.is_finished or product.is_expired %}
+      <li>{{ product }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
