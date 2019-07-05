@@ -1,0 +1,46 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<h1>Products</h1>
+
+<h3>Active Products</h3>
+<div class="product-grid">
+  {% for p in active_products %}
+    {% if p.date_expires %}
+      <div class="card">
+        <h4 class="card__heading"><a href="{% url 'product_detail' p.pk %}">{{ p.name }}</a></h4>
+        <p class="card__details">Expires - {{ p.date_expires }}</p>
+      </div>
+    {% endif %}
+  {% endfor %}
+  {% for p in active_products %}
+    {% if not p.date_expires %}
+      <div class="card">
+        <h4 class="card__heading"><a href="{% url 'product_detail' p.pk %}">{{ p.name }}</a></h4>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<h3>Finished Products</h3>
+<div class="product-grid">
+  {% for p in finished_products %}
+    <div class="card">
+      <h4 class="card__heading"><a href="{% url 'product_detail' p.pk %}">{{ p.name }}</a></h4>
+      <p class="card__details">Finished - {{ p.date_finished }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+<h3>Expired Products</h3>
+{% if expired_products|length > 0 %}
+  {% for p in expired_products %}
+    <p>{{ p.name }}
+      -
+      <b>{{ p.date_expires }}</b>
+    </p>
+  {% endfor %}
+{% else %}
+  <p>No expired products</p>
+{% endif %}
+{% endblock %}

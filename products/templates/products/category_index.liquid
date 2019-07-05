@@ -1,5 +1,7 @@
+{% extends 'products/base.liquid' %}
+
 <ul>
-  {% for key, value, value_slug in categories %}
+  {% for value, value_slug in categories %}
     <li>
       <a href="{% url 'products_in_category' value_slug %}">{{ value }}</a>
     </li>
