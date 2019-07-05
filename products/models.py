@@ -9,13 +9,15 @@ class Category(models.Model):
   DRINK = "Drink"
   FOOD = "Food"
   TOILETRIES = "Toiletries"
-  name = models.CharField(max_length=250, primary_key=True)
-  category_group = models.CharField(max_length=250, choices=((CLEANING.upper(),CLEANING), (DRINK.upper(),DRINK), (FOOD.upper(),FOOD), (TOILETRIES.upper(),TOILETRIES)))
+  name = models.CharField(max_length=250,unique=True)
+  group = models.CharField(max_length=250, choices=((CLEANING.upper(),CLEANING), (DRINK.upper(),DRINK), (FOOD.upper(),FOOD), (TOILETRIES.upper(),TOILETRIES)))
+
   def __str__(self):
-    return self.name
+    return f"{self.group} - {self.name}"
 
 class Product(models.Model):
   product_unit_choices = (
+    ("bag", "bag"),
     ("box", "box"),
     ("bottle", "bottle"),
     ("case", "case"),
@@ -23,52 +25,54 @@ class Product(models.Model):
     ("gallon", "gallon"),
     ("halfdozen", "half-dozen"),
     ("halfgallon", "half-gallon"), 
+    ("loaf", "loaf"),
+    ("package", "package"),
     ("roll", "roll"),
     ("sixpack", "six pack"),
   )
   product_category_choices = (
     ("Cleaning", (
-      ("c_bath", "bathroom"),
-      ("c_kitchen", "kitchen"),
-      ("c_laundry", "laundry"),
-      ("c_surfaces", "surface"),
-      ("c_other", "other cleaner"),
+      "bathroom",
+      "kitchen",
+      "laundry",
+      "surface",
+      "other cleaner",
     )),
     ("Drink", (
-      ("d_beer", "beer"),
-      ("d_dairy", "dairy"),
-      ("d_juice", "juice"),
-      ("d_liquer", "liquer"),
-      ("d_liquor", "liquor"),
-      ("d_pop", "soda pop"),
-      ("d_soft", "soft drink"),
-      ("d_other", "other drink"),
+      "beer",
+      "dairy",
+      "juice",
+      "liquer",
+      "liquor",
+      "soda pop",
+      "soft drink",
+      "other drink",
     )),
     ("Food", (
-      ("f_cereal", "cereal"),
-      ("f_condiment", "condiment"),
-      ("f_fish", "fish"),
-      ("f_meat", "meat"),
-      ("f_snack", "snack"),
-      ("f_spice", "spice"),
-      ("f_other", "other food"),
+      "cereal",
+      "condiment",
+      "fish",
+      "meat",
+      "snack",
+      "spice",
+      "other food",
     )),
     ("Toiletries", (
-      ("t_bandages", "bandages"),
-      ("t_bodywash", "body wash"),
-      ("t_dental", "dental"),
-      ("t_hairstyle", "hair styling"),
-      ("t_hairwash", "hair wash"),
-      ("t_medicine", "medicine"),
-      ("t_tissue", "tissues"),
-      ("t_other", "other toiletry"),
+      "bandages",
+      "body wash",
+      "dental",
+      "hair styling",
+      "hair wash",
+      "medicine",
+      "tissues",
+      "other toiletry",
     )),
   )
   name = models.CharField(max_length=250, null=False, blank=False)
   price = models.DecimalField(default=0.00, max_digits=6, decimal_places=2, validators=[min_value_val(0.00),max_value_val(1_000.00)])
   quantity = models.IntegerField(default=1)
   unit = models.CharField(max_length=500, choices=product_unit_choices)
-  category = models.CharField(blank=True,max_length=500, choices=product_category_choices) # models.ForeignKey('Category',null=True,on_delete=models.CASCADE)#
+  category = models.ForeignKey('Category',null=True,on_delete=models.CASCADE)
   date_purchased = models.DateField()
   date_expires = models.DateField(null=True, blank=True,)
   date_finished = models.DateField(null=True, blank=True,)
@@ -97,10 +101,15 @@ class Product(models.Model):
     return (self.date_finished - self.date_purchased).days
 
   def finish(self):
-    self.date_finished = timezone.now().date()
-    self.date_delta = self.get_date_delta()
-    self.is_finished = True
+    if (not self.is_finished):
+      self.date_finished = timezone.localtime(timezone.now()).date()
+      self.date_delta = self.get_date_delta()
+      self.is_finished = True
   
   def expire(self):
     self.finish()
     self.is_expired = True
+
+# class Statistic(models.Model):
+#   category = models.CharField(max_length=250, choices=Product)
+#   categoryFK = models.ForeignKey('Category',null=True,on_delete=models.CASCADE)
