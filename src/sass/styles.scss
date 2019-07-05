@@ -1,0 +1,26 @@
+$font-family-sans: "sans-serif";
+$font-family-serif: "serif";
+$base-font-size: 18px;
+$size-scale: (
+  ("none", 0),
+  ("xxs", 0.5),
+  ("xs", 0.75),
+  ("s", 1),
+  ("m", 1.25),
+  ("l", 1.5),
+  ("xl", 1.75),
+  ("xxl", 2)
+);
+$mapped-pairs: (
+  ("fs", "font-size"),
+  ("m", "margin"),
+  ("mt", "margin-top"),
+  ("mb", "margin-bottom"),
+  ("p", "padding"),
+  ("pt", "padding-top"),
+  ("pb", "padding-bottom")
+);
+
+@import "utilities/index";
+@import "components/index";
+@import "placeholders/index";

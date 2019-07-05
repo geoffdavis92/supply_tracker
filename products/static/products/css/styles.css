@@ -1,0 +1,203 @@
+body {
+  font-family: sans-serif;
+  font-size: 18px; }
+
+.card {
+  border: 1px solid #aaa;
+  border-radius: 2px; }
+
+.site-header {
+  background-color: #00bfff;
+  color: #fff;
+  display: flex;
+  align-content: center; }
+  .site-header__back-button {
+    text-decoration: none; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem; }
+  @media only screen and (min-width: 500px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media only screen and (min-width: 768px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr); } }
+  @media only screen and (min-width: 1100px) {
+    .product-grid {
+      grid-template-columns: repeat(4, 1fr); } }
+
+.card__heading {
+  font-weight: bold; }
+
+.fs-none {
+  font-size: 0rem; }
+
+.fs-xxs {
+  font-size: 0.5rem; }
+
+.fs-xs {
+  font-size: 0.75rem; }
+
+.fs-s {
+  font-size: 1rem; }
+
+.fs-m {
+  font-size: 1.25rem; }
+
+.fs-l {
+  font-size: 1.5rem; }
+
+.fs-xl {
+  font-size: 1.75rem; }
+
+.fs-xxl {
+  font-size: 2rem; }
+
+.card__heading, body, .m-none {
+  margin: 0rem; }
+
+.m-xxs {
+  margin: 0.5rem; }
+
+.m-xs {
+  margin: 0.75rem; }
+
+.m-s {
+  margin: 1rem; }
+
+.m-m {
+  margin: 1.25rem; }
+
+.m-l {
+  margin: 1.5rem; }
+
+.m-xl {
+  margin: 1.75rem; }
+
+.m-xxl {
+  margin: 2rem; }
+
+.mt-none {
+  margin-top: 0rem; }
+
+.mt-xxs {
+  margin-top: 0.5rem; }
+
+.mt-xs {
+  margin-top: 0.75rem; }
+
+.card__details, .mt-s {
+  margin-top: 1rem; }
+
+.mt-m {
+  margin-top: 1.25rem; }
+
+.mt-l {
+  margin-top: 1.5rem; }
+
+.mt-xl {
+  margin-top: 1.75rem; }
+
+.mt-xxl {
+  margin-top: 2rem; }
+
+.card__details, .mb-none {
+  margin-bottom: 0rem; }
+
+.mb-xxs {
+  margin-bottom: 0.5rem; }
+
+.mb-xs {
+  margin-bottom: 0.75rem; }
+
+.mb-s {
+  margin-bottom: 1rem; }
+
+.mb-m {
+  margin-bottom: 1.25rem; }
+
+.mb-l {
+  margin-bottom: 1.5rem; }
+
+.mb-xl {
+  margin-bottom: 1.75rem; }
+
+.mb-xxl {
+  margin-bottom: 2rem; }
+
+body, .p-none {
+  padding: 0rem; }
+
+.p-xxs {
+  padding: 0.5rem; }
+
+.card, .p-xs {
+  padding: 0.75rem; }
+
+.p-s {
+  padding: 1rem; }
+
+.p-m {
+  padding: 1.25rem; }
+
+.p-l {
+  padding: 1.5rem; }
+
+.p-xl {
+  padding: 1.75rem; }
+
+.p-xxl {
+  padding: 2rem; }
+
+.pt-none {
+  padding-top: 0rem; }
+
+.pt-xxs {
+  padding-top: 0.5rem; }
+
+.pt-xs {
+  padding-top: 0.75rem; }
+
+.pt-s {
+  padding-top: 1rem; }
+
+.pt-m {
+  padding-top: 1.25rem; }
+
+.pt-l {
+  padding-top: 1.5rem; }
+
+.pt-xl {
+  padding-top: 1.75rem; }
+
+.pt-xxl {
+  padding-top: 2rem; }
+
+.pb-none {
+  padding-bottom: 0rem; }
+
+.pb-xxs {
+  padding-bottom: 0.5rem; }
+
+.pb-xs {
+  padding-bottom: 0.75rem; }
+
+.pb-s {
+  padding-bottom: 1rem; }
+
+.pb-m {
+  padding-bottom: 1.25rem; }
+
+.pb-l {
+  padding-bottom: 1.5rem; }
+
+.pb-xl {
+  padding-bottom: 1.75rem; }
+
+.pb-xxl {
+  padding-bottom: 2rem; }
+
+/*# sourceMappingURL=styles.css.map */

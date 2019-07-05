@@ -1,0 +1,16 @@
+@mixin _($placeholder-name) {
+  @extend %#{$placeholder-name};
+}
+
+@mixin compose-util-classes($prefix, $property) {
+  @each $segment in $size-scale {
+    $key: nth($segment, 1);
+    $scale: nth($segment, 2);
+    %#{$prefix}-#{$key} {
+      #{$property}: $scale * 1 + rem;
+    }
+    .#{$prefix}-#{$key} {
+      @include _("#{$prefix}-#{$key}");
+    }
+  }
+}

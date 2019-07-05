@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "sass": "sass sass/styles.scss:../products/static/products/css/styles.css --watch",
+    "sass-build": "sass sass/styles.scss:../products/static/products/css/styles.css"
+  }
+}

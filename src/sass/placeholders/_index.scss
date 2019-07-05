@@ -1,0 +1,7 @@
+%fw-bold {
+  font-weight: bold;
+}
+
+@each $pair in $mapped-pairs {
+  @include compose-util-classes(nth($pair, 1), nth($pair, 2));
+}
